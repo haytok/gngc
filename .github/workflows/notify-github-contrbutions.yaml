@@ -1,10 +1,6 @@
 name: Notify GitHub contributions
 
 on:
-  # push:
-  #   branches: [ main ]
-  #   paths:
-  #     - 'gngc/**'
   workflow_dispatch:
   schedule:
     - cron: '0 8 * * *'
@@ -24,19 +20,12 @@ jobs:
     
     - name: Setup .env
       run: |
-        pwd
-        ls
-        echo ------
         cd /home/runner/work/gngc/gngc
         cat << EOF > .env
         IFTTT_TOKEN=${{ secrets.IFTTT_TOKEN }}
         USER_NAME=${{ secrets.USER_NAME }}
         API_TOKEN=${{ secrets.API_TOKEN }}
         EOF
-
-    # - name: Run go mod tidy
-    #   run: |
-    #     go mod tidy
 
     - name: Run main.go
       run: |
