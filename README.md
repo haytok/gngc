@@ -30,6 +30,18 @@ sudo ln -s ${PWD}/gngc/main /usr/local/bin/gngc
 # How to use
 
 ```bash
+> gngc -h
+Get GitHub contributions.
+
+Usage:
+  gngc [flags]
+
+Flags:
+  -h, --help     help for gngc
+  -n, --notify   Get GitHub contributions and notify them to IFTTT.
+```
+
+```bash
 > gngc
 2022 年 02 月 07 日のコミット数は 5 です！
 ```
