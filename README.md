@@ -7,7 +7,7 @@ A simple command line application to get GitHub contributions and notify them to
 - Create .env file
 
 ```bash
-cat << EOF > hoge
+cat << EOF > .env
 USER_NAME=USER_NAME
 API_TOKEN=API_TOKEN
 IFTTT_TOKEN=IFTTT_TOKEN
