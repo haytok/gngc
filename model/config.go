@@ -6,8 +6,8 @@ type Config struct {
 }
 
 type GitHubConfig struct {
-	Token    string
 	UserName string
+	Token    string
 }
 
 type IFTTTConfig struct {
