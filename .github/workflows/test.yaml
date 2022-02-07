@@ -15,7 +15,7 @@ jobs:
       run: |
         echo $HOME
         touch .env
-        ls
+        ls -la
         touch $HOME/.env
-        ls $HOME
+        ls -la $HOME
         pwd
