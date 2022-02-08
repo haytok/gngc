@@ -24,7 +24,7 @@ jobs:
         echo $HOME
         echo -=-=-=-=-=-=
         cat << EOF > /home/runner/work/gngc/gngc/config/config.toml
-        [GitHub]
+        [hoge]
         Token = ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         UserName = ${{ secrets.USER_NAME }}
 
