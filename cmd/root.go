@@ -20,7 +20,7 @@ var isNotified bool
 var rootCmd = &cobra.Command{
 	Use:           "gngc",
 	Short:         "Get and Notify GitHub Contributions",
-	Long:          "A simple command line application to get GitHub contributions and notify them to IFTTT.",
+	Long:          "A simple command line application to get GitHub contributions from GraphQL API and notify them to IFTTT.",
 	SilenceErrors: true,
 	// SilenceUsage:  true,
 
