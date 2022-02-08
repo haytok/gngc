@@ -8,7 +8,7 @@ A simple command line application to get GitHub contributions from [GraphQL API]
 
 # How to setup
 
-- Create `$HOME/.gngc.toml`. Or, you can also optionally specify a configuration file. (such as gngc --config config/config.toml)
+- Create `$HOME/.gngc.toml` for credentials. Or, you can also optionally specify a configuration file. (such as gngc --config config/config.toml)
 
 ```bash
 cat << EOF > $HOME/.gngc.toml
