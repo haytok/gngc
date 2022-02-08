@@ -20,7 +20,7 @@ jobs:
     
     - name: Setup .gngc.toml
       run: |
-        cat << EOF > $HOME/.gngc.toml
+        cat << EOF > $HOME/.hoge.toml
         [GitHub]
         Token = ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         UserName = ${{ secrets.USER_NAME }}
@@ -36,4 +36,4 @@ jobs:
 
     - name: Delete .gngc.toml
       run: |
-        rm $HOME/.gngc.toml
+        rm $HOME/.hoge.toml
