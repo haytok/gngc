@@ -18,16 +18,10 @@ Token = "Token"
 EOF
 ```
 
-- Build main.go
+- Install
 
 ```bash
-go build main.go
-```
-
-- Set binary
-
-```bash
-sudo ln -s ${PWD}/gngc/main /usr/local/bin/gngc
+go install https://github.com/dilmnqvovpnmlib/gngc@latest
 ```
 
 # How to use
