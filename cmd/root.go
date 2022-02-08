@@ -66,7 +66,7 @@ func initConfig() {
 		}
 
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".gngc")
+		viper.SetConfigName(".hoge")
 		viper.SetConfigType("toml")
 	}
 
