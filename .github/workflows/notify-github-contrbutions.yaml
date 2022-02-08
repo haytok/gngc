@@ -26,14 +26,15 @@ jobs:
         cd /home/runner/work/gngc/gngc/config
         cat << EOF > config.toml
         [GitHub]
-        Token=${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        UserName=${{ secrets.USER_NAME }}
+        Token=hoge
+        UserName=hoge
 
         [IFTTT]
-        EventName=${{ secrets.IFTTT_EVENT_NAME }}
-        Token=${{ secrets.IFTTT_TOKEN }}
+        EventName=hoge
+        Token=hoge
         EOF
         ls
+        cat config.toml
 
     - name: Run main.go
       run: |
