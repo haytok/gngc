@@ -1,6 +1,6 @@
 # gngc (Get and Notify GitHub Contributions)
 
-A simple command line application to get GitHub contributions and notify them to [IFTTT](https://ifttt.com/).
+A simple command line application to get GitHub contributions from [GraphQL API](https://docs.github.com/en/graphql) and notify them to [IFTTT](https://ifttt.com/).
 
 # How to setup
 
