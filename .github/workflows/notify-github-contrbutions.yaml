@@ -17,20 +17,20 @@ jobs:
       with:
         go-version: '1.17.6'
     - run: go version
-    
+
     - name: Setup .gngc.toml
       run: |
         pwd
         echo $HOME
         echo -=-=-=-=-=-=
         cat << EOF > ./config/config.toml
-        [hoge]
-        Token = ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        UserName = ${{ secrets.USER_NAME }}
+        [GitHub]
+        Token=${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        UserName=${{ secrets.USER_NAME }}
 
         [IFTTT]
-        EventName = ${{ secrets.IFTTT_EVENT_NAME }}
-        Token = ${{ secrets.IFTTT_TOKEN }}
+        EventName=${{ secrets.IFTTT_EVENT_NAME }}
+        Token=${{ secrets.IFTTT_TOKEN }}
         EOF
         ls
 
