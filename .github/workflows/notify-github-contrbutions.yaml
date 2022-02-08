@@ -32,6 +32,7 @@ jobs:
         EventName = ${{ secrets.IFTTT_EVENT_NAME }}
         Token = ${{ secrets.IFTTT_TOKEN }}
         EOF
+        ls
 
     - name: Run main.go
       run: |
