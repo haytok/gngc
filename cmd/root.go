@@ -59,6 +59,7 @@ func initConfig() {
 	if cfgFile != "" {
 		viper.SetConfigFile(cfgFile)
 	} else {
+		// --config を付けない場合に呼び出される処理
 		home, err := homedir.Dir()
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error::", err)
@@ -66,7 +67,7 @@ func initConfig() {
 		}
 
 		viper.AddConfigPath(home)
-		viper.SetConfigName(".hoge")
+		viper.SetConfigName(".gngc")
 		viper.SetConfigType("toml")
 	}
 
