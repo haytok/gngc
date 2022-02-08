@@ -2,6 +2,10 @@
 
 A simple command line application to get GitHub contributions from [GraphQL API](https://docs.github.com/en/graphql) and notify them to [IFTTT](https://ifttt.com/).
 
+
+![gngc](https://user-images.githubusercontent.com/44946173/153080398-7db5ef05-3883-4f6d-a405-0a1e16eb2017.png)
+
+
 # How to setup
 
 - Create `$HOME/.gngc.toml`. Or, you can also optionally specify a configuration file. (such as gngc --config config/config.toml)
