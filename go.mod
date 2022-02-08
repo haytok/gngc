@@ -3,7 +3,6 @@ module github.com/dilmnqvovpnmlib/gngc
 go 1.17
 
 require (
-	github.com/joho/godotenv v1.4.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/shurcooL/githubv4 v0.0.0-20220115235240-a14260e6f8a2
 	github.com/shurcooL/graphql v0.0.0-20200928012149-18c5c3165e3a
