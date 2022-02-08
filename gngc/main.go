@@ -3,51 +3,23 @@ package gngc
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 
 	"github.com/dilmnqvovpnmlib/gngc/model"
-	"github.com/joho/godotenv"
 	"github.com/shurcooL/githubv4"
 	"github.com/shurcooL/graphql"
 	"golang.org/x/oauth2"
 )
 
-var (
-	writer io.Writer = os.Stderr
-	Info             = log.New(writer, "INFO: ", log.LstdFlags)
-	Error            = log.New(writer, "ERROR: ", log.LstdFlags)
-)
-
-func LoadEnv() {
-	err := godotenv.Load()
-	if err != nil {
-		Error.Print("Error for Loading .env file.")
-		os.Exit(1)
-	}
-}
-
-func PostGitHubAPI() (model.ResultContributionDays, error) {
-	api_token := os.Getenv("API_TOKEN")
-	user_name := os.Getenv("USER_NAME")
-	if api_token == "" {
-		return model.ResultContributionDays{}, errors.New("Token for GitHub API doesnt exits.")
-	}
-	if user_name == "" {
-		return model.ResultContributionDays{}, errors.New("User name for GitHub doesnt exits.")
-	}
-
+func postGitHubAPI(gitHubConfig model.GitHubConfig) (model.ResultContributionDays, error) {
 	url := "https://api.github.com/graphql"
-	src := oauth2.StaticTokenSource(&oauth2.Token{AccessToken: api_token})
+	src := oauth2.StaticTokenSource(&oauth2.Token{AccessToken: gitHubConfig.Token})
 	httpClient := oauth2.NewClient(context.Background(), src)
 	client := graphql.NewClient(url, httpClient)
-
 	var query struct {
 		RepositoryOwner struct {
 			Login graphql.String
@@ -63,10 +35,10 @@ func PostGitHubAPI() (model.ResultContributionDays, error) {
 		} `graphql:"repositoryOwner(login: $userName)"`
 	}
 	vaiables := map[string]interface{}{
-		"userName": githubv4.String(user_name),
+		"userName": githubv4.String(gitHubConfig.UserName),
 	}
-
 	res := model.ResultContributionDays{}
+
 	err := client.Query(context.Background(), &query, vaiables)
 	if err != nil {
 		return res, err
@@ -92,24 +64,18 @@ func createMessage(result model.ResultContributionDays) string {
 	return msg
 }
 
-func GetGitHubContributions() string {
-	res, err := PostGitHubAPI()
+func GetGitHubContributions(gitHubConfig model.GitHubConfig) (string, error) {
+	res, err := postGitHubAPI(gitHubConfig)
 	if err != nil {
-		Error.Print(err)
-		os.Exit(1)
+		return "", err
 	}
 
 	msg := createMessage(res)
-	return msg
+	return msg, nil
 }
 
-func createUrl(url string, event string) (string, error) {
-	token := os.Getenv("IFTTT_TOKEN")
-	if token == "" {
-		return "", errors.New("Token for IFTTT doesnt exits.")
-	}
-
-	return fmt.Sprintf(url, event) + token, nil
+func createUrl(iFTTTConfig model.IFTTTConfig, url string) string {
+	return fmt.Sprintf(url, iFTTTConfig.EventName) + iFTTTConfig.Token
 }
 
 func postIFTTT(url string, msg string) (*http.Response, error) {
@@ -136,27 +102,23 @@ func postIFTTT(url string, msg string) (*http.Response, error) {
 	return resp, nil
 }
 
-func NotifyIFTTT(msg string) {
+func NotifyIFTTT(iFTTTConfig model.IFTTTConfig, msg string) (string, error) {
 	url := "https://maker.ifttt.com/trigger/%s/with/key/"
-	event := "tools"
-	url, err := createUrl(url, event)
-	if err != nil {
-		Error.Print(err)
-		os.Exit(1)
-	}
+	url = createUrl(iFTTTConfig, url)
 
 	resp, err := postIFTTT(url, msg)
 	if err != nil {
-		Error.Print(err)
-		os.Exit(1)
+		return "", err
 	}
+
 	defer resp.Body.Close()
 
-	fmt.Println(resp.Status)
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		Error.Print(err)
-		os.Exit(1)
+		return "", err
 	}
-	fmt.Println(string(body))
+
+	res_message := resp.Status + " from IFTTT API\n" + string(body)
+
+	return res_message, nil
 }
