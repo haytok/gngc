@@ -23,7 +23,8 @@ jobs:
         pwd
         echo $HOME
         echo -=-=-=-=-=-=
-        cat << EOF > ./config/config.toml
+        cd /home/runner/work/gngc/gngc/config
+        cat << EOF > config.toml
         [GitHub]
         Token=${{ secrets.PERSONAL_ACCESS_TOKEN }}
         UserName=${{ secrets.USER_NAME }}
@@ -36,6 +37,6 @@ jobs:
 
     - name: Run main.go
       run: |
-        go run main.go -n --config ./config/config.toml
+        go run main.go -n --config /home/runner/work/gngc/gngc/config/config.toml
         echo ----------
         go run main.go -n 
