@@ -41,3 +41,13 @@ func CheckErr(msg interface{}) {
 ## rootCmd.Run と rootCmd.RunE の違いに関して
 
 ## CLI アプリケーションが実行されるまでの流れに関して
+
+## GitHub Actions の toml ファイルの内容に関して
+
+## Golang のスタックトレーサに関して
+
+## ダウンロードしたバイナリに対してシンボリックリンクを張る
+
+```bash
+sudo ln -s ${HOME}/go/1.17.6/bin/gngc /usr/local/bin/gngc
+```
