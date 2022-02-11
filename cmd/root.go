@@ -62,7 +62,7 @@ func initConfig() {
 		// --config を付けない場合に呼び出される処理
 		home, err := homedir.Dir()
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "Error::", err)
+			fmt.Fprintln(os.Stderr, "Error", err)
 			os.Exit(1)
 		}
 
@@ -72,12 +72,12 @@ func initConfig() {
 	}
 
 	if err := viper.ReadInConfig(); err != nil {
-		fmt.Fprintln(os.Stderr, "Error:::", err)
+		fmt.Fprintln(os.Stderr, "Error", err)
 		os.Exit(1)
 	}
 
 	if err := viper.Unmarshal(&config); err != nil {
-		fmt.Fprintln(os.Stderr, "Error::::", err)
+		fmt.Fprintln(os.Stderr, "Error", err)
 		os.Exit(1)
 	}
 }
