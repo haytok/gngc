@@ -71,6 +71,7 @@ func GetGitHubContributions(gitHubConfig model.GitHubConfig) (string, error) {
 	}
 
 	msg := createMessage(res)
+
 	return msg, nil
 }
 
