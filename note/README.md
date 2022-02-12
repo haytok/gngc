@@ -4,18 +4,15 @@
 
 ## アプリケーションがエラーで落ちた際、標準のメッセージを出力しないようにするオプションに関して
 
-```golang
-var rootCmd = &cobra.Command{
-...
-    SilenceErrors: true,
-	SilenceUsage:  true,
-...
-}
-```
+- [cobra のソースコードを読んで調査してみた](https://hakiwata.jp/post/20220213/)
 
 ## rootCmd.Run と rootCmd.RunE の違いに関して
 
+- [cobra のソースコードを読んで調査してみた](https://hakiwata.jp/post/20220213/)
+
 ## CLI アプリケーションが実行されるまでの流れに関して
+
+- [cobra のソースコードを読んで調査してみた](https://hakiwata.jp/post/20220213/)
 
 ## `root.go` の `func Execute()` 内の実装に関して
 
