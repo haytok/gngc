@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/dilmnqvovpnmlib/gngc/cmd"
+	"github.com/haytok/gngc/cmd"
 )
 
 func main() {

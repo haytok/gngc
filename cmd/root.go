@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/dilmnqvovpnmlib/gngc/gngc"
-	"github.com/dilmnqvovpnmlib/gngc/model"
+	"github.com/haytok/gngc/gngc"
+	"github.com/haytok/gngc/model"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

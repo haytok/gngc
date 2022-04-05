@@ -1,4 +1,4 @@
-module github.com/dilmnqvovpnmlib/gngc
+module github.com/haytok/gngc
 
 go 1.17
 

@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/dilmnqvovpnmlib/gngc/model"
+	"github.com/haytok/gngc/model"
 	"github.com/shurcooL/githubv4"
 	"github.com/shurcooL/graphql"
 	"golang.org/x/oauth2"
