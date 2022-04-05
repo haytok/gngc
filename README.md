@@ -25,7 +25,7 @@ EOF
 - Install
 
 ```bash
-go install github.com/dilmnqvovpnmlib/gngc@latest
+go install github.com/haytok/gngc@latest
 ```
 
 # How to use
